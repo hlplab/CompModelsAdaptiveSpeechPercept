@@ -1,0 +1,84 @@
+---
+title: "simu"
+output: html_document
+date: "2026-05-26"
+---
+
+Run simulation 2 for Toscano & McMurray (2010). 
+
+
+# 1 generate data according to table 1
+
+```{r}
+
+#synthesize data according to table 1
+d.vot.voiced <- rnorm(n = 2000, mean = 0, sd = 5)
+d.vl.voiced <- rnorm(n = 2000, mean = 188, sd = 45)
+d.third.voiced <- rnorm(n = 2000, mean = 260, sd = 10)
+
+d.vot.voiceless <- rnorm(n = 2000, mean = 50, sd = 10)
+d.vl.voiceless <- rnorm(n = 2000, mean = 170, sd = 44)
+d.third.voiceless <- rnorm(n = 2000, mean = 300, sd = 10)
+
+d.voiced <- data.frame(category = "voiced",VOT= d.vot.voiced, 
+                       VL = d.vl.voiced, Third  = d.third.voiced)
+
+d.voiceless <- data.frame(category = "voiceless", VOT = d.vot.voiceless, 
+                          VL = d.vl.voiceless, Third = d.third.voiceless)
+
+d <- rbind(d.voiced, d.voiceless)
+
+# sanity check
+ggplot(d, aes(x = VOT)) +
+  geom_density()
+```
+
+
+# 2 build up the model architecture
+
+```{r}
+
+# gap of understanding
+mog.object <- function(K = 20, mu.m = 25, mu.sd = 75, sig = 3, seed = 42){
+  list(mu = rnorm(K, mu.m, mu.sd),
+    sigma = rep(sig, K),
+    phi = rep(1 / K, K))
+}
+
+
+# Get G(x) and M(x) according to equation 4 and 5
+mog.G <- function(mog.object, x) {
+  mog.object$phi * dnorm(x, mean = mog.object$mu, sd = mog.object$sigma)
+}
+mog.M <- function(mog.object, x) sum(mog.G(mog.object, x))
+
+mog.post <- function(mog.object, x){
+  G <- mog.G(mog.object, x),
+  M <- mog.M(mog.object, x),
+  G/M
+}
+
+# zscore data
+
+
+# get G(x) by adding up 
+
+
+# calculate weight
+w <- function(K, cue){
+  0.5*sum()
+}
+
+
+# get log-likelihood 
+
+
+```
+
+
+# 3 parameter estimation through gradient descent 
+
+```{r}
+
+```
+
