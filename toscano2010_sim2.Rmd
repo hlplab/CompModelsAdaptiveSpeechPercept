@@ -22,8 +22,13 @@ Let $G_i(x)$ be the likelihood that the i-th Gaussian generated the observation 
 
 Let $\eta_\phi$, $\eta_\mu$, and $\eta_\sigma$ be the learning rates for the trial-by-trial updates of $\Delta\phi_i$, $\Delta\mu_i$, and $\Delta\sigma_i$ to the frequency, mean, and standard deviation of each Gaussian, respectively.
 
-$$G_i(x) = \phi_i \frac{1}{\sqrt{2\pi\sigma_i^2}} \exp\left(-\frac{(x-\mu_i)^2}{2\sigma_i^2}\right) \tag{4} $$ 
-$$ M(x) = \sum_{i}^{K} G_i(x)  \tag{5} $$
+$$
+G_i(x) = \phi_i \frac{1}{\sqrt{2\pi\sigma_i^2}} \exp\left(-\frac{(x-\mu_i)^2}{2\sigma_i^2}\right) \tag{4}
+$$
+
+$$
+M(x) = \sum_{i}^{K} G_i(x) \tag{5}
+$$
 
 Learning rule:
 
@@ -215,15 +220,12 @@ apply chain rule once again
 
 $$
 \frac{d}{d\mu_i}(x - \mu_i)^2 = 2(x - \mu_i) \cdot \frac{d}{d\mu_i}(x - \mu_i) = 2(x - \mu_i) \cdot (-1) = -2(x - \mu_i) \\[3pt]
-\frac{du}{d\mu_i} = -\frac{1}{2\sigma_i^2} \cdot (-2)(x - \mu_i) = \frac{x - \mu_i}{\sigma_i^2} 
-
+\frac{du}{d\mu_i} = -\frac{1}{2\sigma_i^2} \cdot (-2)(x - \mu_i) = \frac{x - \mu_i}{\sigma_i^2}
 $$
 
 and plug it back
-
 $$
-\frac{\partial G_i}{\partial \mu_i} ={\phi_i \cdot \frac{1}{\sqrt{2\pi\sigma_i^2}} \cdot \exp!\left(-\frac{(x-\mu_i)^2}{2\sigma_i^2}\right)}\cdot \frac{x - \mu_i}{\sigma_i^2} \\[5pt]
-
-\frac{\partial G_i}{\partial \mu_i} =  G_i(x) \cdot \frac{x - \mu_i}{\sigma_i^2} 
+\frac{\partial G_i}{\partial \mu_i} = \phi_i \cdot \frac{1}{\sqrt{2\pi\sigma_i^2}} \cdot \exp\left(-\frac{(x-\mu_i)^2}{2\sigma_i^2}\right) \cdot \frac{x - \mu_i}{\sigma_i^2} \\[5pt]
+\frac{\partial G_i}{\partial \mu_i} = G_i(x) \cdot \frac{x - \mu_i}{\sigma_i^2}
 $$
 
