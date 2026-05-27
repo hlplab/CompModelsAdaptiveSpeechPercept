@@ -1,0 +1,379 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={simu},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{simu}
+\author{}
+\date{\vspace{-2.5em}2026-05-26}
+
+\begin{document}
+\maketitle
+
+Run simulation 2 for Toscano \& McMurray (2010).
+
+Let \(x\) be the observed cue value for a given cue dimension
+(e.g.~VOT);
+
+Let \(i \in \{1, \dots, K\}\) index the K Gaussian components that
+together form the learner's internal category representation of a given
+cue dimension;
+
+Let \(\phi_i\) be the mixing weight, frequency of occurrence) of the
+i-th Gaussian;
+
+Let \(\mu_i\) be its mean, representing the central or prototypical cue
+value of the component;
+
+Let \(\sigma_i\) be its standard deviation, representing the component's
+spread or uncertainty along the cue dimension;
+
+Let \(G_i(x)\) be the likelihood that the i-th Gaussian generated the
+observation \(x\) given that cue dimension,
+
+Let \(\eta_\phi\), \(\eta_\mu\), and \(\eta_\sigma\) be the learning
+rates for the trial-by-trial updates of \(\Delta\phi_i\),
+\(\Delta\mu_i\), and \(\Delta\sigma_i\) to the frequency, mean, and
+standard deviation of each Gaussian, respectively.
+
+\[G_i(x) = \phi_i \frac{1}{\sqrt{2\pi\sigma_i^2}} \exp\left(-\frac{(x-\mu_i)^2}{2\sigma_i^2}\right) \tag{4} \]
+\[ M(x) = \sum_{i}^{K} G_i(x)  \tag{5} \]
+
+Learning rule:
+
+\begin{itemize}
+\tightlist
+\item
+  A crucial innovation from this model is the use of a winner-take-all
+  update rule such that only one Gaussian updates its value on any given
+  trial. This allows the model to suppress unneeded categories and
+  arrive at the correct solution. Without it, the model does not
+  determine the correct number of categories (see McMurray et al.,
+  2009a).
+\end{itemize}
+
+\[\Delta\phi_i = \eta_\phi \frac{G_i(x)}{M(x)} \tag{A2} \]
+
+\[\Delta\mu_i = \eta_\mu \left(\frac{G_i(x)}{M(x)}\right) \frac{(x-\mu_i)}{\sigma_i^2} \tag{A3} \]
+
+\[\Delta\sigma_i = \eta_\sigma \left(\frac{G_i(x)}{M(x)}\right) \left(\sigma_i^{-3}(x-\mu_i)^2 - \sigma_i^{-1}\right) \tag{A4} \]
+
+\section{1 generate data according to table
+1}\label{generate-data-according-to-table-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\#synthesize data according to table 1}
+\NormalTok{d.vot.voiced }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{20000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{5}\NormalTok{)}
+\NormalTok{d.vl.voiced }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{20000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{188}\NormalTok{, }\AttributeTok{sd =} \DecValTok{45}\NormalTok{)}
+\NormalTok{d.third.voiced }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{20000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{260}\NormalTok{, }\AttributeTok{sd =} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{d.vot.voiceless }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{20000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{50}\NormalTok{, }\AttributeTok{sd =} \DecValTok{10}\NormalTok{)}
+\NormalTok{d.vl.voiceless }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{20000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{170}\NormalTok{, }\AttributeTok{sd =} \DecValTok{44}\NormalTok{)}
+\NormalTok{d.third.voiceless }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{20000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{300}\NormalTok{, }\AttributeTok{sd =} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{d.voiced }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{category =} \StringTok{"voiced"}\NormalTok{,}\AttributeTok{VOT=}\NormalTok{ d.vot.voiced, }
+                       \AttributeTok{VL =}\NormalTok{ d.vl.voiced, }\AttributeTok{Third  =}\NormalTok{ d.third.voiced)}
+
+\NormalTok{d.voiceless }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{category =} \StringTok{"voiceless"}\NormalTok{, }\AttributeTok{VOT =}\NormalTok{ d.vot.voiceless, }
+                          \AttributeTok{VL =}\NormalTok{ d.vl.voiceless, }\AttributeTok{Third =}\NormalTok{ d.third.voiceless)}
+
+\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(d.voiced, d.voiceless)}
+
+\CommentTok{\# sanity check}
+\FunctionTok{ggplot}\NormalTok{(d, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ VOT)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{toscano_sim2_files/toscano_sim2_files/figure-latex/unnamed-chunk-1-1.pdf}}
+
+\section{2 build up the model architecture for a single cue
+(e.g.~VOT)}\label{build-up-the-model-architecture-for-a-single-cue-e.g.-vot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# gap of understanding}
+\NormalTok{mog.object }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{K =} \DecValTok{20}\NormalTok{, }\AttributeTok{mu.m =} \DecValTok{25}\NormalTok{, }\AttributeTok{mu.sd =} \DecValTok{75}\NormalTok{, }\AttributeTok{sig =} \DecValTok{3}\NormalTok{, }\AttributeTok{seed =} \DecValTok{42}\NormalTok{)\{}
+  \FunctionTok{list}\NormalTok{(}\AttributeTok{mu =} \FunctionTok{rnorm}\NormalTok{(K, mu.m, mu.sd),}
+    \AttributeTok{sigma =} \FunctionTok{rep}\NormalTok{(sig, K),}
+    \AttributeTok{phi =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1} \SpecialCharTok{/}\NormalTok{ K, K))}
+\NormalTok{\}}
+
+\CommentTok{\# Get G(x) and M(x) according to equation 4 and 5}
+\NormalTok{mog.G }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(mog.object, x) \{}
+\NormalTok{  mog.object}\SpecialCharTok{$}\NormalTok{phi }\SpecialCharTok{*} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean =}\NormalTok{ mog.object}\SpecialCharTok{$}\NormalTok{mu, }\AttributeTok{sd =}\NormalTok{ mog.object}\SpecialCharTok{$}\NormalTok{sigma)}
+\NormalTok{\}}
+\NormalTok{mog.M }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(mog.object, x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{mog.G}\NormalTok{(mog.object, x))}
+
+\NormalTok{mog.post }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(mog.object, x)\{}
+\NormalTok{  G }\OtherTok{\textless{}{-}} \FunctionTok{mog.G}\NormalTok{(mog.object, x)}
+\NormalTok{  M }\OtherTok{\textless{}{-}} \FunctionTok{mog.M}\NormalTok{(mog.object, x)}
+\NormalTok{  G}\SpecialCharTok{/}\NormalTok{M}
+\NormalTok{\}}
+
+\CommentTok{\# learning rule according to A2{-}A5}
+\CommentTok{\# eta is for learning rate}
+\CommentTok{\# q.what is the use of sigma.min, sigma.max}
+\NormalTok{mog.update }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(mog.object, x, }\AttributeTok{eta.mu =} \DecValTok{1}\NormalTok{, }\AttributeTok{eta.sigma =} \DecValTok{1}\NormalTok{, }\AttributeTok{eta.phi =} \FloatTok{0.001}\NormalTok{)\{}
+\NormalTok{  r }\OtherTok{\textless{}{-}} \FunctionTok{mog.post}\NormalTok{(mog.object, x)}
+\NormalTok{  mu.old }\OtherTok{\textless{}{-}}\NormalTok{ mog.object}\SpecialCharTok{$}\NormalTok{mu}
+\NormalTok{  sg.old }\OtherTok{\textless{}{-}}\NormalTok{ mog.object}\SpecialCharTok{$}\NormalTok{sigma}
+
+  \CommentTok{\# A3 }
+\NormalTok{  mog.object}\SpecialCharTok{$}\NormalTok{mu }\OtherTok{\textless{}{-}}\NormalTok{ mu.old }\SpecialCharTok{+}\NormalTok{ eta.mu }\SpecialCharTok{*}\NormalTok{ r }\SpecialCharTok{*}\NormalTok{ (x }\SpecialCharTok{{-}}\NormalTok{ mu.old) }\SpecialCharTok{/}\NormalTok{ sg.old}\SpecialCharTok{\^{}}\DecValTok{2}
+  \CommentTok{\# A4 }
+\NormalTok{  sig.new }\OtherTok{\textless{}{-}}\NormalTok{ sg.old }\SpecialCharTok{+}\NormalTok{ eta.sigma }\SpecialCharTok{*}\NormalTok{ r }\SpecialCharTok{*}\NormalTok{ (sg.old}\SpecialCharTok{\^{}}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ (x }\SpecialCharTok{{-}}\NormalTok{ mu.old)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{{-}}\NormalTok{ sg.old}\SpecialCharTok{\^{}}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{))}
+\NormalTok{  mog.object}\SpecialCharTok{$}\NormalTok{sigma }\OtherTok{\textless{}{-}}\NormalTok{ sig.new}
+  \CommentTok{\# ai suggests an extra sigma.max, sigma.min}
+  \CommentTok{\#if (!is.na(sigma.max)) sg.new \textless{}{-} pmin(sg.new, sigma.max)}
+  \CommentTok{\#mog.object$sigma \textless{}{-} pmax(sg.new, sigma.min)}
+
+  \CommentTok{\# A2, winner{-}take{-}all, so that unnecessary categories don\textquotesingle{}t get updated}
+\NormalTok{  winner }\OtherTok{\textless{}{-}} \FunctionTok{which.max}\NormalTok{(r)}
+\NormalTok{  mog.object}\SpecialCharTok{$}\NormalTok{phi[winner] }\OtherTok{\textless{}{-}}\NormalTok{ mog.object}\SpecialCharTok{$}\NormalTok{phi[winner] }\SpecialCharTok{+}\NormalTok{ eta.phi }\SpecialCharTok{*}\NormalTok{ r[winner]}
+\NormalTok{  mog.object}\SpecialCharTok{$}\NormalTok{phi }\OtherTok{\textless{}{-}} \FunctionTok{pmax}\NormalTok{(mog.object}\SpecialCharTok{$}\NormalTok{phi, }\DecValTok{0}\NormalTok{)}
+\NormalTok{  mog.object}\SpecialCharTok{$}\NormalTok{phi }\OtherTok{\textless{}{-}}\NormalTok{ mog.object}\SpecialCharTok{$}\NormalTok{phi }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(mog.object}\SpecialCharTok{$}\NormalTok{phi)}
+\NormalTok{  mog.object}
+\NormalTok{\}}
+
+\CommentTok{\# calculate weight, equation 6, using outer product}
+\NormalTok{mog.weight }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(mog.object)\{}
+\NormalTok{  diffs }\OtherTok{\textless{}{-}} \FunctionTok{outer}\NormalTok{(mog.object}\SpecialCharTok{$}\NormalTok{mu, mog.object}\SpecialCharTok{$}\NormalTok{mu, }\ControlFlowTok{function}\NormalTok{(a, b) (a }\SpecialCharTok{{-}}\NormalTok{ b)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{  sigs  }\OtherTok{\textless{}{-}} \FunctionTok{outer}\NormalTok{(mog.object}\SpecialCharTok{$}\NormalTok{sigma, mog.object}\SpecialCharTok{$}\NormalTok{sigma, }\StringTok{"*"}\NormalTok{)}
+\NormalTok{  phis  }\OtherTok{\textless{}{-}} \FunctionTok{outer}\NormalTok{(mog.object}\SpecialCharTok{$}\NormalTok{phi, mog.object}\SpecialCharTok{$}\NormalTok{phi, }\StringTok{"*"}\NormalTok{)}
+  \FloatTok{0.5}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{(phis }\SpecialCharTok{*}\NormalTok{ diffs }\SpecialCharTok{/}\NormalTok{ sigs)}
+\NormalTok{\}}
+
+\CommentTok{\# sanity check on VOT only updating}
+\NormalTok{mog }\OtherTok{\textless{}{-}} \FunctionTok{mog.object}\NormalTok{(}\AttributeTok{K =} \DecValTok{20}\NormalTok{, }\AttributeTok{mu.m =} \DecValTok{25}\NormalTok{, }\AttributeTok{mu.sd =} \DecValTok{75}\NormalTok{, }\AttributeTok{sig =} \DecValTok{3}\NormalTok{)}
+\NormalTok{idx }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(d), }\DecValTok{90000}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# shuffle so voiced/voiceless aren\textquotesingle{}t blocked}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ idx) }
+\NormalTok{  mog }\OtherTok{\textless{}{-}} \FunctionTok{mog.update}\NormalTok{(mog, d}\SpecialCharTok{$}\NormalTok{VOT[i])}
+
+\FunctionTok{mog.weight}\NormalTok{(mog)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10.44576
+\end{verbatim}
+
+\section{3 extend one cue to three cues (VOT, VL,
+combined)}\label{extend-one-cue-to-three-cues-vot-vl-combined}
+
+p446. Initial \(\mu\) values were randomly chosen from a distribution
+with a mean of 25 and standard deviation of 75 for the VOT dimension and
+a mean of 179 and standard deviation of 75 for the VL dimension. Initial
+\(\sigma\) were set to 3 for the VOT dimiension and 10 for the VL
+dimension. K was set to 20, and initial \(\phi\) were set to 1 ⁄ K.
+Learning rates were set to 1 (\(\eta_\mu\)), 1 (\(\eta_\sigma\)), 0.001
+(\(\eta_\phi\)), and 0.001 (\(\eta_p\)).2 The models were then tested on
+a range of VOTs (0--40 ms in 5 ms steps) and two VLs (125 and 225 ms).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set initial parameters as somewhere between voiced and voiceless}
+\NormalTok{vot.mog  }\OtherTok{\textless{}{-}} \FunctionTok{mog.object}\NormalTok{(}\AttributeTok{K =} \DecValTok{20}\NormalTok{, }\AttributeTok{mu.m =} \DecValTok{25}\NormalTok{,  }\AttributeTok{mu.sd =} \DecValTok{75}\NormalTok{, }\AttributeTok{sig =} \DecValTok{3}\NormalTok{)}
+\NormalTok{vot.mog.raw  }\OtherTok{\textless{}{-}} \FunctionTok{mog.object}\NormalTok{(}\AttributeTok{K =} \DecValTok{20}\NormalTok{, }\AttributeTok{mu.m =} \DecValTok{25}\NormalTok{,  }\AttributeTok{mu.sd =} \DecValTok{75}\NormalTok{, }\AttributeTok{sig =} \DecValTok{3}\NormalTok{)}
+
+\NormalTok{vl.mog }\OtherTok{\textless{}{-}} \FunctionTok{mog.object}\NormalTok{(}\AttributeTok{K =} \DecValTok{20}\NormalTok{, }\AttributeTok{mu.m =} \DecValTok{179}\NormalTok{, }\AttributeTok{mu.sd =} \DecValTok{75}\NormalTok{, }\AttributeTok{sig =} \DecValTok{10}\NormalTok{)}
+\NormalTok{comb.mog }\OtherTok{\textless{}{-}} \FunctionTok{mog.object}\NormalTok{(}\AttributeTok{K =} \DecValTok{20}\NormalTok{, }\AttributeTok{mu.m =} \DecValTok{0}\NormalTok{,   }\AttributeTok{mu.sd =} \DecValTok{1}\NormalTok{,  }\AttributeTok{sig =} \FloatTok{0.2}\NormalTok{)}
+
+\NormalTok{vot.gm }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(d}\SpecialCharTok{$}\NormalTok{VOT); vot.gs }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(d}\SpecialCharTok{$}\NormalTok{VOT)}
+\NormalTok{vl.gm  }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(d}\SpecialCharTok{$}\NormalTok{VL);  vl.gs  }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(d}\SpecialCharTok{$}\NormalTok{VL)}
+\NormalTok{w.vot }\OtherTok{\textless{}{-}} \FloatTok{0.5}
+\NormalTok{w.vl  }\OtherTok{\textless{}{-}} \FloatTok{0.5}
+
+\NormalTok{idx }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(d), }\DecValTok{5000}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ idx) \{}
+\NormalTok{  vot.val }\OtherTok{\textless{}{-}}\NormalTok{ d}\SpecialCharTok{$}\NormalTok{VOT[i]}
+\NormalTok{  vl.val  }\OtherTok{\textless{}{-}}\NormalTok{ d}\SpecialCharTok{$}\NormalTok{VL[i]}
+  \CommentTok{\# update the two cue MOGs from initial values}
+\NormalTok{  vot.mog }\OtherTok{\textless{}{-}} \FunctionTok{mog.update}\NormalTok{(vot.mog, vot.val)}
+\NormalTok{  vl.mog  }\OtherTok{\textless{}{-}} \FunctionTok{mog.update}\NormalTok{(vl.mog,  vl.val)}
+  \CommentTok{\# normalize the weights so that they sum up to one}
+\NormalTok{  w.vot.raw }\OtherTok{\textless{}{-}} \FunctionTok{mog.weight}\NormalTok{(vot.mog)}
+\NormalTok{  w.vl.raw  }\OtherTok{\textless{}{-}} \FunctionTok{mog.weight}\NormalTok{(vl.mog)}
+\NormalTok{  tot }\OtherTok{\textless{}{-}}\NormalTok{ w.vot.raw }\SpecialCharTok{+}\NormalTok{ w.vl.raw}
+\NormalTok{  w.vot }\OtherTok{\textless{}{-}}\NormalTok{ w.vot.raw }\SpecialCharTok{/}\NormalTok{ tot;  w.vl }\OtherTok{\textless{}{-}}\NormalTok{ w.vl.raw }\SpecialCharTok{/}\NormalTok{ tot }
+  \CommentTok{\# zscore the cue}
+\NormalTok{  z.vot }\OtherTok{\textless{}{-}}\NormalTok{ (vot.val }\SpecialCharTok{{-}}\NormalTok{ vot.gm) }\SpecialCharTok{/}\NormalTok{ vot.gs}
+\NormalTok{  z.vl  }\OtherTok{\textless{}{-}}\NormalTok{ (vl.val  }\SpecialCharTok{{-}}\NormalTok{ vl.gm ) }\SpecialCharTok{/}\NormalTok{ vl.gs}
+\NormalTok{  x.comb }\OtherTok{\textless{}{-}}\NormalTok{ w.vot }\SpecialCharTok{*}\NormalTok{ z.vot }\SpecialCharTok{{-}}\NormalTok{ w.vl }\SpecialCharTok{*}\NormalTok{ z.vl}
+  \CommentTok{\# update the combined ver as well}
+\NormalTok{  comb.mog }\OtherTok{\textless{}{-}} \FunctionTok{mog.update}\NormalTok{(comb.mog, x.comb)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in dnorm(x, mean = mog.object$mu, sd = mog.object$sigma): NaNs produced
+## Warning in dnorm(x, mean = mog.object$mu, sd = mog.object$sigma): NaNs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xs }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(d}\SpecialCharTok{$}\NormalTok{VOT) }\SpecialCharTok{{-}} \DecValTok{5}\NormalTok{, }\FunctionTok{max}\NormalTok{(d}\SpecialCharTok{$}\NormalTok{VOT) }\SpecialCharTok{+} \DecValTok{5}\NormalTok{, }\AttributeTok{length.out =} \DecValTok{400}\NormalTok{)}
+
+\CommentTok{\# add a VOT axis}
+\NormalTok{plot.df }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}
+  \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ xs, }\AttributeTok{version =} \StringTok{"raw"}\NormalTok{, }\AttributeTok{density =} \FunctionTok{sapply}\NormalTok{(xs, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{mog.M}\NormalTok{(vot.mog.raw, x))),}
+  \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ xs, }\AttributeTok{version =} \StringTok{"updated"}\NormalTok{, }\AttributeTok{density =} \FunctionTok{sapply}\NormalTok{(xs, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{mog.M}\NormalTok{(vot.mog,x))))}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{data =} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ d}\SpecialCharTok{$}\NormalTok{VOT), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =} \FunctionTok{after\_stat}\NormalTok{(density)), }\AttributeTok{fill =} \StringTok{"grey85"}\NormalTok{,}\AttributeTok{bins =} \DecValTok{40}\NormalTok{,) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{data =}\NormalTok{ plot.df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ density, }\AttributeTok{colour =}\NormalTok{ version)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{toscano_sim2_files/toscano_sim2_files/figure-latex/unnamed-chunk-4-1.pdf}}
+
+\section{The derivation of A2}\label{the-derivation-of-a2}
+
+We want \(\frac{\partial \log M(x)}{\partial \mu_i}\).
+
+Apply the log rule
+
+\[
+\frac{\partial \log M}{\partial \mu_i} = \frac{1}{M} \cdot \frac{\partial M}{\partial \mu_i}  = \frac{1}{M} \cdot \sum_j \frac{\partial G_j}{\partial \mu_i} 
+\]
+
+And as \(G_j\) only contains \(\mu_j\), not the other \(\mu\)'s. So
+\(\frac{\partial G_j}{\partial \mu_i} = 0\) and only the \(j=i\) term
+survives
+
+\[
+\frac{\partial G_j}{\partial \mu_i} = \frac{\partial G_i}{\partial \mu_i} = \phi_i \cdot \frac{1}{\sqrt{2\pi\sigma_i^2}} \cdot \frac{\partial}{\partial \mu_i}\left[ \exp!\left( -\frac{(x-\mu_i)^2}{2\sigma_i^2} \right) \right]
+\]
+
+Apply the exponential rule and the chain rule we get the following
+
+\[
+u(\mu_i) = -\frac{(x-\mu_i)^2}{2\sigma_i^2} \\[3pt]\frac{du}{d\mu_i} = -\frac{1}{2\sigma_i^2} \cdot \frac{d}{d\mu_i}\left[(x-\mu_i)^2\right]
+\]
+
+apply chain rule once again
+
+\$\$ \frac{d}{d\mu_i}(x - \mu\_i)\^{}2 = 2(x - \mu\_i)
+\cdot \frac{d}{d\mu_i}(x - \mu\_i) = 2(x - \mu\_i) \cdot (-1) = -2(x -
+\mu\_i) \textbackslash{[}3pt{]} \frac{du}{d\mu_i} =
+-\frac{1}{2\sigma_i^2} \cdot (-2)(x - \mu\_i) =
+\frac{x - \mu_i}{\sigma_i^2}
+
+\$\$
+
+and plug it back
+
+\$\$ \frac{\partial G_i}{\partial \mu_i} =\{\phi\_i
+\cdot \frac{1}{\sqrt{2\pi\sigma_i^2}}
+\cdot \exp!\left(-\frac{(x-\mu_i)^2}{2\sigma_i^2}\right)\}\cdot \frac{x - \mu_i}{\sigma_i^2}
+\textbackslash{[}5pt{]}
+
+\frac{\partial G_i}{\partial \mu_i} = G\_i(x)
+\cdot \frac{x - \mu_i}{\sigma_i^2} \$\$
+
+\end{document}
