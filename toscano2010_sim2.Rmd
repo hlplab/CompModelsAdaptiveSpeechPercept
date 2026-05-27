@@ -12,15 +12,15 @@ Let $x$ be the observed cue value for a given cue dimension (e.g. VOT);
 
 Let $i \in \{1, \dots, K\}$ index the K Gaussian components that together form the learner's internal category representation of a given cue dimension;
 
-Let $\phi_i$ be the mixing weight, frequency of occurrence) of the i-th Gaussian;
+Let $\phi_i$ be the mixing weight, frequency of occurrence of the i-th Gaussian;
 
-Let $\mu_i$ be its mean, representing the central or prototypical cue value of the component;
+Let $\mu_i$ be its mean cue value of the Gaussian component along the cue dimension;
 
-Let $\sigma_i$ be its standard deviation, representing the component's spread or uncertainty along the cue dimension;
+Let $\sigma_i$ be its standard deviation of the Gaussian component along the cue dimension;
 
 Let $G_i(x)$ be the likelihood that the i-th Gaussian generated the observation $x$ given that cue dimension,
 
-Let $\eta_\phi$, $\eta_\mu$, and $\eta_\sigma$ be the learning rates for the trial-by-trial updates of $\Delta\phi_i$, $\Delta\mu_i$, and $\Delta\sigma_i$ to the frequency, mean, and standard deviation of each Gaussian, respectively.
+Let $\eta_\phi$, $\eta_\mu$, and $\eta_\sigma$ be the learning rates for the trial-by-trial updates of $\Delta\phi_i$, $\Delta\mu_i$, and $\Delta\sigma_i$ to the frequency, mean, and standard deviation of each Gaussian
 
 $$
 G_i(x) = \phi_i \frac{1}{\sqrt{2\pi\sigma_i^2}} \exp\left(-\frac{(x-\mu_i)^2}{2\sigma_i^2}\right) \tag{4}
@@ -188,9 +188,6 @@ ggplot() +
   theme_minimal()
 
 ```
-
-
-
 
 
 
