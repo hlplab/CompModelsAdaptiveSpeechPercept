@@ -72,7 +72,6 @@ ggplot(d, aes(x = VOT)) +
 
 ```{r}
 
-# gap of understanding
 mog.object <- function(K = 20, mu.m = 25, mu.sd = 75, sig = 3, seed = 42){
   list(mu = rnorm(K, mu.m, mu.sd),
     sigma = rep(sig, K),
@@ -139,7 +138,6 @@ mog.weight(mog)
 p446. Initial $\mu$ values were randomly chosen from a distribution with a mean of 25 and standard deviation of 75 for the VOT dimension and a mean of 179 and standard deviation of 75 for the VL dimension. Initial $\sigma$ were set to 3 for the VOT dimiension and 10 for the VL dimension. K was set to 20, and initial $\phi$ were set to 1 ⁄ K. Learning rates were set to 1 ($\eta_\mu$), 1 ($\eta_\sigma$), 0.001 ($\eta_\phi$), and 0.001 ($\eta_p$).2 The models were then tested on a range of VOTs (0–40 ms in 5 ms steps) and two VLs (125 and 225 ms).
 
 ```{r}
-# set initial parameters as somewhere between voiced and voiceless
 vot.mog  <- mog.object(K = 20, mu.m = 25,  mu.sd = 75, sig = 3)
 vot.mog.raw  <- mog.object(K = 20, mu.m = 25,  mu.sd = 75, sig = 3)
 
